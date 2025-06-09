@@ -79,7 +79,7 @@ export async function createAiRequest(text) {
     const data = await axiosInstance(
         'POST',
         'chat/completions',
-        `Bearer ${process.env.AI_TOKEN}`,
+        `Bearer ${process.env.AI_TOKEN.replace(/[^a-zA-Z0-9-]/g, '')}`,
         {
             model: 'deepseek/deepseek-r1-0528-qwen3-8b:free',
             messages: [{ role: 'user', content: text }]
