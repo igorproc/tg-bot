@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  frontend:
+    container_name: telegram-bot
+    build:
+      context: .
+      args:
+        - ENVIRONMENT_NAME=${ENVIRONMENT_NAME}
+        - BRANCH_NAME=${BRANCH_NAME}
+      dockerfile: Dockerfile
+    environment:
+      - ENVIRONMENT_NAME=${ENVIRONMENT_NAME}
+
+networks:
+  default:
+    name: nginx-proxy
+    external: true
